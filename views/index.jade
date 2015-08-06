@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    div.container
+        div.page-header
+            h3
+                | Mode: #{mode}
+        each data in groups
+            h4
+                | #{data.text}
+                small
+                    | #{data.icons.length} icons, #{data.icons.length / 4} characters
+            div.bit-group
+                each icon, idx in data.icons
+                    if idx > 0 && idx % 4 == 0
+                        div.spacer
+                    div(class="bit bit#{icon}")
+            hr
