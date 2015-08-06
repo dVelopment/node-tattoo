@@ -26,7 +26,11 @@ router.get('/', function(req, res, next) {
     }
     var groups = [];
 
-    var mode = req.query.mode || 'ascii';
+    var mode = req.query.mode || '7bit';
+
+    if (mode !== '7bit' && mode !== '8bit') {
+        mode = '7bit';
+    }
 
     texts.forEach(function(text) {
         var buff = new Buffer(text, 'utf8');
@@ -55,7 +59,7 @@ router.get('/', function(req, res, next) {
         });
     });
 
-    res.render('index', { groups: groups, mode: mode.toUpperCase() });
+    res.render('index', { groups: groups, mode: mode });
 });
 
 module.exports = router;
