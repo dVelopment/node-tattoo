@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var util = require('util');
 
 function dec2bin(dec){
     return (dec >>> 0).toString(2);
@@ -10,7 +11,11 @@ router.get('/', function(req, res, next) {
     var texts;
 
     if (req.query.text) {
-        texts = [req.query.text];
+        texts = req.query.text;
+
+        if (!util.isArray(texts)) {
+            texts = [texts];
+        }
     } else {
         texts = [
             'We\'re made of star stuff',
