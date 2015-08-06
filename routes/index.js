@@ -45,7 +45,7 @@ router.get('/', function(req, res, next) {
             bytes.push(byte);
 
             for (var j = 0; j < byte.length; j += 2) {
-                if ('ascii' === mode && 0 === j) {
+                if (0 === j && '7bit' === mode) {
                     icons.push(byte[1]);
                 } else {
                     icons.push(byte.substring(j, j + 2));
