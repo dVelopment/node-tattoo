@@ -26,10 +26,12 @@ router.get('/', function(req, res, next) {
     }
     var groups = [];
 
-    var mode = req.query.mode || '7bit';
+    var mode = req.query.mode ? req.query.mode.toLowerCase() : '7bit';
 
     if (mode !== '7bit' && mode !== '8bit') {
-        mode = '7bit';
+        res.status(400);
+        res.render('error', { message: "invalid mode: " + mode, error: { status: 400}});
+        return;
     }
 
     texts.forEach(function(text) {
