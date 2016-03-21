@@ -20,6 +20,9 @@ $position: (($outer-size - $inner-size) / 2) - $border-size;
     margin-right: $margin-size;
     margin-bottom: $margin-size;
     box-sizing: border-box;
+    @media print {
+      -webkit-print-color-adjust:exact !important;
+    }
 
     &:last-child {
         margin-right: 0;
@@ -37,12 +40,16 @@ $position: (($outer-size - $inner-size) / 2) - $border-size;
         top: $position;
         border-radius: 50%;
         border: $border-size solid $color-full;
+        @media print {
+          -webkit-print-color-adjust:exact !important;
+        }
     }
 }
 
 .bit-group {
     @include display(flex);
     @include flex-wrap(wrap);
+    width: 100%;
 }
 
 .spacer {
@@ -81,4 +88,5 @@ $position: (($outer-size - $inner-size) / 2) - $border-size;
 
 body {
     background: white;
+    width: 100%;
 }
