@@ -11,6 +11,7 @@ $position: (($outer-size - $inner-size) / 2) - $border-size;
 
 .bit {
     display: block;
+    float: left;
     width: $outer-size;
     height: $outer-size;
     border-radius: 50%;
@@ -22,6 +23,10 @@ $position: (($outer-size - $inner-size) / 2) - $border-size;
     box-sizing: border-box;
     @media print {
       -webkit-print-color-adjust:exact !important;
+    }
+
+    &:nth-of-type(24n+1) {
+        clear: both;
     }
 
     &:last-child {
@@ -47,13 +52,22 @@ $position: (($outer-size - $inner-size) / 2) - $border-size;
 }
 
 .bit-group {
-    @include display(flex);
-    @include flex-wrap(wrap);
+    //@include display(flex);
+    //@include flex-wrap(wrap);
     width: 100%;
+
+    &:after {
+        content: '';
+        display: block;
+        visibility: hidden;
+        height: 0;
+        clear: both;
+    }
 }
 
 .spacer {
     width: 2 * $margin-size * 0;
+    display: block;
 }
 
 .bit0 {
@@ -65,6 +79,12 @@ $position: (($outer-size - $inner-size) / 2) - $border-size;
 
     &:before {
         background-color: $color-full;
+    }
+}
+
+.bit00 {
+    &:before {
+        display: none;
     }
 }
 
@@ -89,4 +109,10 @@ $position: (($outer-size - $inner-size) / 2) - $border-size;
 body {
     background: white;
     width: 100%;
+}
+
+@media print {
+    form {
+        display: none;
+    }
 }

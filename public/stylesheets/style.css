@@ -5819,6 +5819,7 @@ button.close {
 
 .bit {
   display: block;
+  float: left;
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -5831,6 +5832,8 @@ button.close {
   @media print {
     .bit {
       -webkit-print-color-adjust: exact !important; } }
+  .bit:nth-of-type(24n+1) {
+    clear: both; }
   .bit:last-child {
     margin-right: 0; }
   .bit:before {
@@ -5850,24 +5853,17 @@ button.close {
         -webkit-print-color-adjust: exact !important; } }
 
 .bit-group {
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-lines: multiple;
-  -moz-box-lines: multiple;
-  box-lines: multiple;
-  -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   width: 100%; }
+  .bit-group:after {
+    content: '';
+    display: block;
+    visibility: hidden;
+    height: 0;
+    clear: both; }
 
 .spacer {
-  width: 0px; }
+  width: 0px;
+  display: block; }
 
 .bit0 {
   border-color: transparent; }
@@ -5876,6 +5872,9 @@ button.close {
   border-color: transparent; }
   .bit1:before {
     background-color: #000; }
+
+.bit00:before {
+  display: none; }
 
 .bit01:before {
   background-color: #000; }
@@ -5891,3 +5890,7 @@ button.close {
 body {
   background: white;
   width: 100%; }
+
+@media print {
+  form {
+    display: none; } }

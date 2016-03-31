@@ -64,7 +64,8 @@ router.get('/', function(req, res, next) {
     res.render('index', {
         groups: groups,
         mode: mode,
-        legend: ['0', '1', '00', '01', '10', '11']
+        legend: ['0', '1', '00', '01', '10', '11'],
+        text: req.query.text
     });
 });
 
