@@ -1,0 +1,92 @@
+@import "../node_modules/bourbon/app/assets/stylesheets/bourbon";
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+$color-full: #000;
+$color-empty: #fff;
+$outer-size: 16px;
+$inner-size: $outer-size / 2;
+$border-size: 1px;
+$margin-size: $inner-size / 2;
+$position: (($outer-size - $inner-size) / 2) - $border-size;
+
+.bit {
+    display: block;
+    width: $outer-size;
+    height: $outer-size;
+    border-radius: 50%;
+    border: $border-size solid $color-full;
+    position: relative;
+    background-color: $color-empty;
+    margin-right: $margin-size;
+    margin-bottom: $margin-size;
+    box-sizing: border-box;
+    @media print {
+      -webkit-print-color-adjust:exact !important;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:before {
+        box-sizing: border-box;
+        background-color: $color-empty;
+        content: '';
+        display: block;
+        width: $inner-size;
+        height: $inner-size;
+        position: absolute;
+        left: $position;
+        top: $position;
+        border-radius: 50%;
+        border: $border-size solid $color-full;
+        @media print {
+          -webkit-print-color-adjust:exact !important;
+        }
+    }
+}
+
+.bit-group {
+    @include display(flex);
+    @include flex-wrap(wrap);
+    width: 100%;
+}
+
+.spacer {
+    width: 2 * $margin-size * 0;
+}
+
+.bit0 {
+    border-color: transparent;
+}
+
+.bit1 {
+    border-color: transparent;
+
+    &:before {
+        background-color: $color-full;
+    }
+}
+
+.bit01 {
+    &:before {
+        background-color: $color-full;
+    }
+}
+
+.bit10 {
+    background-color: $color-full;
+}
+
+.bit11 {
+    background-color: $color-full;
+
+    &:before {
+        background-color: $color-full;
+    }
+}
+
+body {
+    background: white;
+    width: 100%;
+}
